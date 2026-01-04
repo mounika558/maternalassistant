@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Medical Assistant</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="landing-container">
+        <header>
+            <h1>🏥 Patient Medical Assistant</h1>
+            <p class="subtitle">AI-Powered Pregnancy Risk Assessment</p>
+        </header>
+
+        <div class="portal-selection">
+            <div class="portal-card" onclick="window.location.href='doctor.html'">
+                <div class="portal-icon">👨‍⚕️</div>
+                <h2>Doctor Portal</h2>
+                <p>Upload EHG/CTG signal files for advanced analysis</p>
+                <button class="portal-btn">Access Doctor Portal</button>
+            </div>
+
+            <div class="portal-card" onclick="window.location.href='patient.html'">
+                <div class="portal-icon">👤</div>
+                <h2>Patient Portal</h2>
+                <p>Enter your medical details for risk assessment</p>
+                <button class="portal-btn">Access Patient Portal</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 Patient Medical Assistant | Powered by AI & Machine Learning</p>
+        </footer>
+    </div>
+
+    <!-- Floating Chatbot -->
+    <div id="chatbot-container" class="chatbot-closed">
+        <div id="chatbot-header">
+            <span>🤖 Medical Assistant</span>
+            <button id="chatbot-close">✕</button>
+        </div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input-container">
+            <input type="text" id="chatbot-input" placeholder="Ask me anything...">
+            <button id="chatbot-send">Send</button>
+        </div>
+    </div>
+
+    <button id="chatbot-toggle" class="chatbot-fab">💬</button>
+
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

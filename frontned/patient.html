@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Portal - Medical Assistant</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🏥 Patient Portal</div>
+        <a href="index.html" class="nav-link">← Back to Home</a>
+    </nav>
+
+    <div class="container">
+        <h1>Patient Medical Assistant</h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="preterm">Preterm/C-Section</button>
+            <button class="tab-btn" data-tab="acidemia">Acidemia</button>
+        </div>
+
+        <!-- Preterm Birth Risk Assessment -->
+        <div id="preterm-tab" class="tab-content active">
+            <h2>Preterm Birth Risk Assessment</h2>
+            
+            <form id="preterm-form" class="patient-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="maternal-age">Maternal Age (years)*</label>
+                        <input type="number" id="maternal-age" required min="15" max="50">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gestational-age">Current Gestational Age (weeks)*</label>
+                        <input type="number" id="gestational-age" required min="1" max="42">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="systolic-bp">Systolic Blood Pressure (mmHg)*</label>
+                        <input type="number" id="systolic-bp" required min="70" max="200">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="diastolic-bp">Diastolic Blood Pressure (mmHg)*</label>
+                        <input type="number" id="diastolic-bp" required min="40" max="130">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="weight">Weight (kg)*</label>
+                        <input type="number" id="weight" required min="30" max="200">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="height">Height (cm)*</label>
+                        <input type="number" id="height" required min="100" max="220">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="previous-pregnancies">Number of Previous Pregnancies*</label>
+                        <input type="number" id="previous-pregnancies" required min="0" max="15">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="diabetes">Diabetes*</label>
+                        <select id="diabetes" required>
+                            <option value="">Select...</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="analyze-btn">
+                    <span class="btn-text">Analyze Risk</span>
+                    <span class="loader" style="display:none;">⏳</span>
+                </button>
+            </form>
+
+            <div id="preterm-results" class="results-container" style="display:none;">
+                <h3>EHG Signal Analysis Results</h3>
+                <div class="result-card">
+                    <div class="risk-indicator" id="preterm-risk-level"></div>
+                    <div class="probability" id="preterm-probability"></div>
+                </div>
+                <div class="recommendations" id="preterm-recommendations"></div>
+            </div>
+        </div>
+
+        <!-- Acidemia Assessment -->
+        <div id="acidemia-tab" class="tab-content">
+            <h2>Fetal Acidemia Risk Assessment</h2>
+            
+            <form id="acidemia-form" class="patient-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="maternal-age-acid">Maternal Age (years)*</label>
+                        <input type="number" id="maternal-age-acid" required min="15" max="50">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gestational-age-acid">Current Gestational Age (weeks)*</label>
+                        <input type="number" id="gestational-age-acid" required min="20" max="42">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="systolic-bp-acid">Systolic Blood Pressure (mmHg)*</label>
+                        <input type="number" id="systolic-bp-acid" required min="70" max="200">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="diastolic-bp-acid">Diastolic Blood Pressure (mmHg)*</label>
+                        <input type="number" id="diastolic-bp-acid" required min="40" max="130">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="weight-acid">Weight (kg)*</label>
+                        <input type="number" id="weight-acid" required min="30" max="200">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="height-acid">Height (cm)*</label>
+                        <input type="number" id="height-acid" required min="100" max="220">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="previous-pregnancies-acid">Number of Previous Pregnancies*</label>
+                        <input type="number" id="previous-pregnancies-acid" required min="0" max="15">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="diabetes-acid">Diabetes*</label>
+                        <select id="diabetes-acid" required>
+                            <option value="">Select...</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="analyze-btn">
+                    <span class="btn-text">Analyze Risk</span>
+                    <span class="loader" style="display:none;">⏳</span>
+                </button>
+            </form>
+
+            <div id="acidemia-results" class="results-container" style="display:none;">
+                <h3>CTG Signal Analysis Results</h3>
+                <div class="result-card">
+                    <div class="risk-indicator" id="acidemia-risk-level"></div>
+                    <div class="probability" id="acidemia-probability"></div>
+                </div>
+                <div class="recommendations" id="acidemia-recommendations"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chatbot -->
+    <div id="chatbot-container" class="chatbot-closed">
+        <div id="chatbot-header">
+            <span>🤖 Medical Assistant</span>
+            <button id="chatbot-close">✕</button>
+        </div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input-container">
+            <input type="text" id="chatbot-input" placeholder="Ask me anything...">
+            <button id="chatbot-send">Send</button>
+        </div>
+    </div>
+
+    <button id="chatbot-toggle" class="chatbot-fab">💬</button>
+
+    <script src="js/main.js"></script>
+    <script src="js/patient.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

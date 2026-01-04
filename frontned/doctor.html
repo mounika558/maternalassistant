@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - Medical Assistant</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🏥 Doctor Portal</div>
+        <a href="index.html" class="nav-link">← Back to Home</a>
+    </nav>
+
+    <div class="container">
+        <h1>Signal-Based Risk Assessment</h1>
+        <p class="page-subtitle">Upload patient signal files (.dat format) for AI-powered analysis</p>
+
+        <div class="prediction-boxes">
+            <!-- Preterm Birth Prediction -->
+            <div class="prediction-box">
+                <div class="box-header preterm-header">
+                    <h2>🤰 Preterm Birth Prediction</h2>
+                    <span class="badge">EHG Signal Analysis</span>
+                </div>
+                <div class="box-content">
+                    <p class="description">Upload EHG (Electrohysterogram) signal file to predict preterm delivery risk</p>
+                    
+                    <div class="upload-area" id="ehg-upload-area">
+                        <input type="file" id="ehg-file" accept=".dat" hidden>
+                        <label for="ehg-file" class="upload-label">
+                            <div class="upload-icon">📁</div>
+                            <p>Click to upload .dat file</p>
+                            <span class="file-info">EHG Signal Data</span>
+                        </label>
+                    </div>
+                    
+                    <div id="ehg-file-name" class="file-name-display"></div>
+                    
+                    <button class="analyze-btn" id="analyze-ehg" disabled>
+                        <span class="btn-text">Analyze EHG Signal</span>
+                        <span class="loader" style="display:none;">⏳</span>
+                    </button>
+
+                    <div id="ehg-results" class="results-container" style="display:none;">
+                        <h3>Analysis Results</h3>
+                        <div class="result-card">
+                            <div class="risk-indicator" id="ehg-risk-level"></div>
+                            <div class="probability" id="ehg-probability"></div>
+                        </div>
+                        <div class="recommendations" id="ehg-recommendations"></div>
+                        <div class="shap-explanation" id="ehg-shap"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Acidemia Prediction -->
+            <div class="prediction-box">
+                <div class="box-header acidemia-header">
+                    <h2>🩺 Fetal Acidemia Prediction</h2>
+                    <span class="badge">CTG Signal Analysis</span>
+                </div>
+                <div class="box-content">
+                    <p class="description">Upload CTG (Cardiotocography) signal file to predict fetal acidemia risk</p>
+                    
+                    <div class="upload-area" id="ctg-upload-area">
+                        <input type="file" id="ctg-file" accept=".dat" hidden>
+                        <label for="ctg-file" class="upload-label">
+                            <div class="upload-icon">📁</div>
+                            <p>Click to upload .dat file</p>
+                            <span class="file-info">CTG Signal Data</span>
+                        </label>
+                    </div>
+                    
+                    <div id="ctg-file-name" class="file-name-display"></div>
+                    
+                    <button class="analyze-btn" id="analyze-ctg" disabled>
+                        <span class="btn-text">Analyze CTG Signal</span>
+                        <span class="loader" style="display:none;">⏳</span>
+                    </button>
+
+                    <div id="ctg-results" class="results-container" style="display:none;">
+                        <h3>Analysis Results</h3>
+                        <div class="result-card">
+                            <div class="risk-indicator" id="ctg-risk-level"></div>
+                            <div class="probability" id="ctg-probability"></div>
+                        </div>
+                        <div class="recommendations" id="ctg-recommendations"></div>
+                        <div class="shap-explanation" id="ctg-shap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chatbot -->
+    <div id="chatbot-container" class="chatbot-closed">
+        <div id="chatbot-header">
+            <span>🤖 Medical Assistant</span>
+            <button id="chatbot-close">✕</button>
+        </div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input-container">
+            <input type="text" id="chatbot-input" placeholder="Ask me anything...">
+            <button id="chatbot-send">Send</button>
+        </div>
+    </div>
+
+    <button id="chatbot-toggle" class="chatbot-fab">💬</button>
+
+    <script src="js/main.js"></script>
+    <script src="js/doctor.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
